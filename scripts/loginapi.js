@@ -73,7 +73,6 @@ window.onload = function () {
                     .then(response => response.json())
                     .then(data => {
                         console.log("Profile data:", data);
-                        localStorage.setItem('roll', data.data.roll);
                         if (data.data && data.data.name) {
                             loginStatus.innerHTML = `<h5 class="bold ms-3">${data.data.name}</h5>`;
                             const btnadmn = document.getElementById("adminbutton")
