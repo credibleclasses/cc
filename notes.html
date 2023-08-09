@@ -35,17 +35,47 @@
                 aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse mx-md-5" id="navbarSupportedContent">
+            <div class="collapse navbar-collapse mx-md-3" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
-                    <li class="nav-item">
-                        <a class="underline-animation alink bold " aria-current="page" href="index.html">Home</a>
-                    </li>
                     <li class="nav-item">
                         <a class=" alink bold active" aria-current="page" href="#">Notes</a>
                     </li>
                     <li class="nav-item">
                         <a class="underline-animation alink bold  " aria-current="page" href="result.html">Result</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="underline-animation alink bold" id="nonvisiblenote" aria-current="page"
+                            onclick="attendance()">Attendance</a>
+                        <script>
+                            function attendance() {
+                                const token = localStorage.getItem('token');
+
+                                if (token) {
+                                    window.location.href = 'attendance.html'
+                                } else {
+                                    $('#custom-alert-modal3').modal('show');
+                                }
+                            }
+                        </script>
+                        <!-- Modal -->
+                        <div class="modal fade" id="custom-alert-modal3" tabindex="-1"
+                            aria-labelledby="custom-alert-modal-label" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h3 class="modal-title fs-5 bold" id="exampleModalLabel">Access Restricted</h3>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                  </div>
+                                  <div class="modal-body">
+                                  <h6>To view your Attendance you must log in your account</h6>  
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Okay</button>
+                                  
+                                  </div>
+                                </div>
+                              </div>
+                        </div>
                     <li class="nav-item">
                         <a class="underline-animation alink bold" aria-current="page" href="notice.html">Notice</a>
                     </li>
@@ -264,83 +294,108 @@
     </div>
 
     <script>
-        const stdroll = localStorage.getItem('roll');
-        var arr = [];
+      const token = localStorage.getItem('token');
+var arr = [];
 
-        document.addEventListener("DOMContentLoaded", function () {
-            // Fetch data from the API
-            fetch(`https://server-as2k.onrender.com/notes/${stdroll}`)
-                .then(response => response.json())
-                .then(data => {
-                    populateTable(data.chemistry, "chemistrynote-body");
-                    populateTable(data.phsyics, "physicsnote-body");
-                    populateTable(data.biology, "biologynote-body");
-                    populateTable(data.geography, "geographynote-body");
-                    populateTable(data.economics, "economicsnote-body");
-                    populateTable(data.civics, "civicsnote-body");
-                    populateTable(data.history, "historynote-body");
-                    arr.push(data.chemistry.length);
-                    arr.push(data.phsyics.length);
-                    arr.push(data.biology.length);
-                    arr.push(data.geography.length);
-                    arr.push(data.economics.length);
-                    arr.push(data.civics.length);
-                    arr.push(data.history.length);
-                    logArrayValue(); // it prints here 
-
-
-                })
-                .catch(error => console.error("Error fetching data:", error));
+// Fetch the student roll from the API using the token
+async function fetchStudentRoll() {
+    try {
+        const response = await fetch('https://server-as2k.onrender.com/verify', {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
         });
 
-        function populateTable(subjectData, containerId) {
-            const container = document.getElementById(containerId);
+        const data = await response.json();
+        return data.roll;
+     
+    } catch (error) {
+        console.error('Error fetching student roll:', error);
+        throw error;
+    }
+}
 
-            // Loop through the subject array and create rows
-            subjectData.forEach(chapter => {
-                const row = document.createElement("tr");
+document.addEventListener("DOMContentLoaded", async function () {
+    try {
+        // Fetch student roll using the token
+        const stdroll = await fetchStudentRoll();
+        console.log(stdroll)
 
-                const nameCell = document.createElement("td");
-                nameCell.className = "bold";
-                nameCell.textContent = chapter.note_name;
+        // Fetch data from the API using the student roll
+        const response = await fetch(`https://server-as2k.onrender.com/notes/${stdroll}`);
+        const data = await response.json();
 
-                const linkCell = document.createElement("td");
-                linkCell.className = "text-end";
-                const link = document.createElement("a");
-                link.href = chapter.note_link;
-                link.textContent = "View Note";
-                linkCell.appendChild(link);
+        populateTable(data.chemistry, "chemistrynote-body");
+        populateTable(data.phsyics, "physicsnote-body");
+        populateTable(data.biology, "biologynote-body");
+        populateTable(data.geography, "geographynote-body");
+        populateTable(data.economics, "economicsnote-body");
+        populateTable(data.civics, "civicsnote-body");
+        populateTable(data.history, "historynote-body");
 
-                row.appendChild(nameCell);
-                row.appendChild(linkCell);
+        arr.push(data.chemistry.length);
+        arr.push(data.phsyics.length);
+        arr.push(data.biology.length);
+        arr.push(data.geography.length);
+        arr.push(data.economics.length);
+        arr.push(data.civics.length);
+        arr.push(data.history.length);
 
-                container.appendChild(row);
-            });
-        }
+        logArrayValue();
+    } catch (error) {
+        console.error("Error fetching data:", error);
+    }
+});
 
-        function logArrayValue() {
-            if (arr[0] == 0) {
-                document.getElementById("chemistrySection").style.display = "none";
-            }
-            if (arr[1] == 0) {
-                document.getElementById("physicsSection").style.display = "none";
-            }
-            if (arr[2] == 0) {
-                document.getElementById("biologySection").style.display = "none";
-            }
-            if (arr[3] == 0) {
-                document.getElementById("geographySection").style.display = "none";
-            }
-            if (arr[4] == 0) {
-                document.getElementById("economicsSection").style.display = "none";
-            }
-            if (arr[5] == 0) {
-                document.getElementById("civicsSection").style.display = "none";
-            }
-            if (arr[5] == 0) {
-                document.getElementById("historySection").style.display = "none";
-            }
-        }
+function populateTable(subjectData, containerId) {
+    const container = document.getElementById(containerId);
+
+    // Loop through the subject array and create rows
+    subjectData.forEach(chapter => {
+        const row = document.createElement("tr");
+
+        const nameCell = document.createElement("td");
+        nameCell.className = "bold";
+        nameCell.textContent = chapter.note_name;
+
+        const linkCell = document.createElement("td");
+        linkCell.className = "text-end";
+        const link = document.createElement("a");
+        link.href = chapter.note_link;
+        link.textContent = "View Note";
+        linkCell.appendChild(link);
+
+        row.appendChild(nameCell);
+        row.appendChild(linkCell);
+
+        container.appendChild(row);
+    });
+}
+
+function logArrayValue() {
+    if (arr[0] == 0) {
+        document.getElementById("chemistrySection").style.display = "none";
+    }
+    if (arr[1] == 0) {
+        document.getElementById("physicsSection").style.display = "none";
+    }
+    if (arr[2] == 0) {
+        document.getElementById("biologySection").style.display = "none";
+    }
+    if (arr[3] == 0) {
+        document.getElementById("geographySection").style.display = "none";
+    }
+    if (arr[4] == 0) {
+        document.getElementById("economicsSection").style.display = "none";
+    }
+    if (arr[5] == 0) {
+        document.getElementById("civicsSection").style.display = "none";
+    }
+    if (arr[6] == 0) {
+        document.getElementById("historySection").style.display = "none";
+    }
+}
 
     </script>
 
