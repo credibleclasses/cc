@@ -41,11 +41,11 @@
                 aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse mx-md-5" id="navbarSupportedContent">
+            <div class="collapse navbar-collapse mx-md-2" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class=" alink bold active" aria-current="page" href="#">Home</a>
-                    </li>
+                    </li> -->
                     <li class="nav-item">
                         <a class="underline-animation alink bold" id="nonvisiblenote" aria-current="page"
                             onclick="notes()">Notes</a>
@@ -88,7 +88,7 @@
                         <script>
                             function result() {
                                 const token = localStorage.getItem('token');
-
+                                     
                                 if (token) {
                                     window.location.href = 'result.html'
                                 } else {
@@ -117,7 +117,40 @@
                         </div>
 
 
-
+                        <li class="nav-item">
+                            <a class="underline-animation alink bold" id="nonvisiblenote" aria-current="page"
+                                onclick="attendance()">Attendance</a>
+                            <script>
+                                function attendance() {
+                                    const token = localStorage.getItem('token');
+    
+                                    if (token) {
+                                        window.location.href = 'attendance.html'
+                                    } else {
+                                        $('#custom-alert-modal3').modal('show');
+                                    }
+                                }
+                            </script>
+                            <!-- Modal -->
+                            <div class="modal fade" id="custom-alert-modal3" tabindex="-1"
+                                aria-labelledby="custom-alert-modal-label" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                      <div class="modal-header">
+                                        <h3 class="modal-title fs-5 bold" id="exampleModalLabel">Access Restricted</h3>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                      </div>
+                                      <div class="modal-body">
+                                      <h6>To view your Attendance you must log in your account</h6>  
+                                      </div>
+                                      <div class="modal-footer">
+                                        <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Okay</button>
+                                      
+                                      </div>
+                                    </div>
+                                  </div>
+                            </div>
+    
 
 
 
@@ -141,10 +174,9 @@
                             Student Log in</button>
                     </div>
 
-                    <button type="button" id="adminbutton"
-                        class="btn btn-outline-warning d-none d-md-block custom-border" data-bs-toggle="modal"
-                        data-bs-target="#staticBackdrop1"> <i class="fa-solid fa-key"></i>
-                        Admin Log in</button>
+                    <a id="adminbutton"
+                        class=" d-none d-md-block none"
+                        ></a>
                 </div>
                 <a id="logoutbutton" class="ms-3 mb-1 btn btn-sm btn-danger custom-border none"
                     onclick="clearLocalStorage()">Log out</a>
