@@ -302,10 +302,19 @@ document.addEventListener("DOMContentLoaded", async function () {
 
             const dateCell = document.createElement('td');
             dateCell.textContent = item.Date;
+            dateCell.classList.add('bold'); // Apply "bold" class
             row.appendChild(dateCell);
 
             const statusCell = document.createElement('td');
             statusCell.textContent = item.attendanceStatus;
+            
+            // Apply CSS class based on attendanceStatus
+            if (item.attendanceStatus === 'Present') {
+                statusCell.classList.add('text-success', 'bold'); // Apply green color and "bold" class
+            } else if (item.attendanceStatus === 'Absent') {
+                statusCell.classList.add('text-danger', 'bold'); // Apply red color and "bold" class
+            }
+            
             row.appendChild(statusCell);
 
             studentTableBody.appendChild(row);
