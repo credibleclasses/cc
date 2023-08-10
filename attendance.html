@@ -314,6 +314,9 @@ document.addEventListener("DOMContentLoaded", async function () {
             } else if (item.attendanceStatus === 'Absent') {
                 statusCell.classList.add('text-danger', 'bold'); // Apply red color and "bold" class
             }
+             else if (item.attendanceStatus === 'Late') {
+                statusCell.classList.add('text-warning', 'bold'); // Apply red color and "bold" class
+            }
             
             row.appendChild(statusCell);
 
@@ -326,6 +329,8 @@ document.addEventListener("DOMContentLoaded", async function () {
         console.error('Error fetching attendance data:', error);
     }
 });
+
+
 
 
 
