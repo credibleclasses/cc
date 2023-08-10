@@ -56,7 +56,7 @@ async function ctsresultsearch() {
                   <td>${data.Exam_Type}</td>
                 </tr>
                 <tr>
-                  <td class="bold" >Exam Date</td>
+                  <td class="bold" >Exam Month</td>
                   <td>${data.Exam_Date}</td>
                 </tr>
                 <tr>
