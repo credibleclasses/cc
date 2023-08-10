@@ -44,6 +44,42 @@
                     <li class="nav-item">
                         <a class=" underline-animation alink bold" aria-current="page" href="result.html">Result</a>
                     </li>
+                      <li class="nav-item">
+                            <a class="underline-animation alink bold" id="nonvisiblenote" aria-current="page"
+                                onclick="attendance()">Attendance</a>
+                            <script>
+                                function attendance() {
+                                    const token = localStorage.getItem('token');
+    
+                                    if (token) {
+                                        window.location.href = 'attendance.html'
+                                    } else {
+                                        $('#custom-alert-modal3').modal('show');
+                                    }
+                                }
+                            </script>
+                            <!-- Modal -->
+                            <div class="modal fade" id="custom-alert-modal3" tabindex="-1"
+                                aria-labelledby="custom-alert-modal-label" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                      <div class="modal-header">
+                                        <h3 class="modal-title fs-5 bold" id="exampleModalLabel">Access Restricted</h3>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                      </div>
+                                      <div class="modal-body">
+                                      <h6>To view your Attendance you must log in your account</h6>  
+                                      </div>
+                                      <div class="modal-footer">
+                                        <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Okay</button>
+                                      
+                                      </div>
+                                    </div>
+                                  </div>
+                            </div>
+    
+
+
                     <li class="nav-item">
                         <a class="underline-animation alink bold" aria-current="page" href="notice.html">Notice</a>
                     </li>
