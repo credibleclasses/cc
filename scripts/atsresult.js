@@ -77,7 +77,7 @@ console.log("Date ",atsresultdate)
         } else {
             atserror.innerHTML = `
         <div class="alert alert-danger alert-dismissible fade show" role="alert" id="incorrectalert">
-          <strong>Not Found!</strong> Exam Date is incorrect.
+          <strong>Not Found!</strong> Exam Month is incorrect.
         </div>`;
         }
     } catch (error) {
