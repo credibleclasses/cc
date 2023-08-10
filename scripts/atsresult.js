@@ -55,7 +55,7 @@ console.log("Date ",atsresultdate)
                   <td>${data.Exam_Type}</td>
                 </tr>
                 <tr>
-                  <td class="bold" >Exam Date</td>
+                  <td class="bold" >Exam Month</td>
                   <td>${data.Exam_Date}</td>
                 </tr>
                 <tr>
