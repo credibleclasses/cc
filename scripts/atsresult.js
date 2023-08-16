@@ -68,7 +68,7 @@ console.log("Date ",atsresultdate)
                 </tr>
                 <tr>
                   <td class="bold" >Percentage</td>
-                  <td>${(data.Obtained_Marks / data.Full_Marks) * 100}%</td>
+                  <td>${((data.Obtained_Marks / data.Full_Marks) * 100).toFixed(2)}%</td>
                 </tr>
               </tbody>
             </table>
