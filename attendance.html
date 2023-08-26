@@ -11,6 +11,7 @@
 
         gtag('config', 'G-8Z8YVWX9ZJ');
     </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
@@ -30,14 +31,66 @@
 
 <body>
 
-    <div id="alert-container" class="position-absolute w-100 text-center" style="top: 0;"></div>
+    <script>
+        function toggleBootstrapClasses() {
+        const navbar = document.getElementById('scrollNavbar');
+        const logo = document.querySelector('.navbar-brand img');
+        const loginButton = document.querySelector('#loginStatus button');
+        const navLinks = document.querySelectorAll('#navbarSupportedContent .nav-item a');
+        const dynamicThemeColorMeta = document.getElementById('dynamic-theme-color');
+
+        if (window.scrollY > 0) {
+            navbar.classList.add('bg-warning', 'position-fixed','w-100','top-0','z-index-n2');
+        logo.style.height = '37px';
+        logo.style.width = '150px';
+        loginButton.classList.remove('btn-outline-warning');
+        loginButton.classList.add('btn-outline-dark');
+
+            navLinks.forEach(link => {
+            link.classList.add('underline-animation-scroll');
+        link.classList.remove('underline-animation');
+            });
+
+        // Change theme color to warning color on scroll
+        dynamicThemeColorMeta.setAttribute('content', '#FFC107');
+        } else {
+            navbar.classList.remove('bg-warning', 'position-fixed', 'w-100');
+        logo.style.height = '50px';
+        logo.style.width = '180px';
+        loginButton.classList.add('btn-outline-warning');
+        loginButton.classList.remove('btn-outline-dark');
+
+            navLinks.forEach(link => {
+            link.classList.remove('underline-animation-scroll');
+        link.classList.add('underline-animation');
+            });
+
+        // Change theme color to white when not scrolling
+        dynamicThemeColorMeta.setAttribute('content', '#FFFFFF');
+        }
+    }
+
+        window.addEventListener('scroll', toggleBootstrapClasses);
+    </script>
 
 
-    <nav class="navbar navbar-expand-lg d-flex justify-content-between mb-4">
+    <style>
+        /* Default styles for the navigation bar */
+        #scrollNavbar {
+            transition: background-color 0.5s, position 0.5s, width 0.5s;
+            z-index: 2;
+        }
+
+        /* Logo transition on scroll */
+        .navbar-brand img {
+            transition: height 0.5s, width 0.5s;
+        }
+    </style>
+    <nav id="scrollNavbar" class="navbar navbar-expand-lg d-flex justify-content-between mb-4">
         <div class="container">
             <a class="navbar-brand" href="index.html">
-                <img src="newlogo.png" alt="Credeible-2-1" alt="Credeible-1" alt="Logo" width="180" height="50"
-                    class="d-inline-block align-text-top">
+                <img src="https://i.ibb.co/3rdb8Bm/Picsart-23-08-24-21-26-47-462.png" alt="Credeible-2-1"
+                    alt="Credeible-1" alt="Logo" width="180" height="50" class="d-inline-block align-text-top">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -45,130 +98,15 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse mx-md-2" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
-                    <!-- <li class="nav-item">
-                        <a class=" alink bold active" aria-current="page" href="#">Home</a>
-                    </li> -->
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 mx-auto">
                     <li class="nav-item">
-                        <a class="underline-animation alink bold" id="nonvisiblenote" aria-current="page"
-                            onclick="notes()">Notes</a>
-                        <script>
-                            function notes() {
-                                const token = localStorage.getItem('token');
-
-                                if (token) {
-                                    window.location.href = 'notes.html'
-                                } else {
-                                    $('#custom-alert-modal').modal('show');
-                                }
-                            }
-                        </script>
-                        <!-- Modal -->
-                        <div class="modal fade" id="custom-alert-modal" tabindex="-1"
-                            aria-labelledby="custom-alert-modal-label" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h3 class="modal-title fs-5 bold" id="exampleModalLabel">Access Restricted</h3>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <h6>To view notes you must log in your account first</h6>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-warning"
-                                            data-bs-dismiss="modal">Okay</button>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- log in modal -->
-                    </li>
-                    <li class="nav-item">
-                        <a class="underline-animation alink bold " aria-current="page" onclick="result()">Result</a>
-
-                        <script>
-                            function result() {
-                                const token = localStorage.getItem('token');
-
-                                if (token) {
-                                    window.location.href = 'result.html'
-                                } else {
-                                    $('#custom-alert-modal1').modal('show');
-                                }
-                            }
-                        </script>
-                        <!-- Modal -->
-                        <div class="modal fade" id="custom-alert-modal1" tabindex="-1"
-                            aria-labelledby="custom-alert-modal-label" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h3 class="modal-title fs-5 bold" id="exampleModalLabel">Access Restricted</h3>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <h6>To check your result you must log in your account first</h6>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-warning"
-                                            data-bs-dismiss="modal">Okay</button>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-                    <li class="nav-item">
-                        <a class="underline-animation alink bold" id="nonvisiblenote" aria-current="page"
-                            onclick="attendance()">Attendance</a>
-                        <script>
-                            function attendance() {
-                                const token = localStorage.getItem('token');
-
-                                if (token) {
-                                    window.location.href = 'attendance.html'
-                                } else {
-                                    $('#custom-alert-modal3').modal('show');
-                                }
-                            }
-                        </script>
-                        <!-- Modal -->
-                        <div class="modal fade" id="custom-alert-modal3" tabindex="-1"
-                            aria-labelledby="custom-alert-modal-label" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h3 class="modal-title fs-5 bold" id="exampleModalLabel">Access Restricted</h3>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <h6>To view your Attendance you must log in your account</h6>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-warning"
-                                            data-bs-dismiss="modal">Okay</button>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-
-
-                    </li>
-                    <li class="nav-item">
-                        <a class="underline-animation alink bold" aria-current="page" href="notice.html">Notice</a>
+                        <a class="underline-animation-scroll alink bold" aria-current="page" href="index.html">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="underline-animation alink bold" aria-current="page" href="course.html">Courses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="underline-animation alink bold" aria-current="page" href="notice.html">Notice</a>
                     </li>
                     <li class="nav-item">
                         <a class="underline-animation alink bold" aria-current="page" href="about.html">About</a>
@@ -182,16 +120,13 @@
                             data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fa-solid fa-key"></i>
                             Student Log in</button>
                     </div>
-
                     <a id="adminbutton" class=" d-none d-md-block none"></a>
                 </div>
-                <a id="logoutbutton" class="ms-3 mb-1 btn btn-sm btn-danger custom-border none"
-                    onclick="clearLocalStorage()">Log out</a>
 
             </div>
             <script>function clearLocalStorage() {
-                    localStorage.clear();
-                    location.href = "index.html"
+            localStorage.clear();
+        location.href="index.html"
                 }
             </script>
         </div>
@@ -254,8 +189,8 @@
                     <!-- This tbody will be populated dynamically with JavaScript -->
                 </tbody>
             </table>
-            <div id="loadingSpinner" class="text-center mt-3">
-                <div class="spinner-border text-primary" role="status">
+            <div class="spinner-container" id="spinner">
+                <div class="spinner-border" role="status">
                     <span class="visually-hidden">Loading...</span>
                 </div>
             </div>
@@ -264,7 +199,31 @@
 
 <script>
 const token = localStorage.getItem('token');
+function formatDate(dateString) {
+    const months = [
+        "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+    ];
 
+    const parts = dateString.split("-");
+    const day = parseInt(parts[0]);
+    const monthIndex = parseInt(parts[1]) - 1;
+    const year = parseInt(parts[2]);
+
+    let daySuffix;
+    if (day === 1 || day === 21 || day === 31) {
+        daySuffix = "st";
+    } else if (day === 2 || day === 22) {
+        daySuffix = "nd";
+    } else if (day === 3 || day === 23) {
+        daySuffix = "rd";
+    } else {
+        daySuffix = "th";
+    }
+
+    const formattedDate = `${day}${daySuffix} ${months[monthIndex]} ${year}`;
+    return formattedDate;
+}
 // Fetch the student roll from the API using the token
 async function fetchStudentRoll() {
     try {
@@ -290,7 +249,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         const data = await response.json();
 
         const studentTableBody = document.getElementById('studentTableBody');
-        const loadingSpinner = document.getElementById('loadingSpinner');
+        const loadingSpinner = document.getElementById('spinner');
 
         // Clear any existing content in the table body
         studentTableBody.innerHTML = '';
@@ -299,9 +258,11 @@ document.addEventListener("DOMContentLoaded", async function () {
         for (let i = data.length - 1; i >= 0; i--) {
             const item = data[i];
             const row = document.createElement('tr');
-
+            formatDate(item.Date)
+            console.log("Unformatted",item.Date)
+            console.log("Formatted",     formatDate(item.Date))
             const dateCell = document.createElement('td');
-            dateCell.textContent = item.Date;
+            dateCell.textContent = formatDate(item.Date);
             dateCell.classList.add('bold'); // Apply "bold" class
             row.appendChild(dateCell);
 
@@ -339,8 +300,6 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     <script src="scripts/admin.js"></script>
     <script src="scripts/loginapi.js">
-
-
     </script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="scripts/index.js">
