@@ -180,13 +180,95 @@
         <div class="row px-2" id="profile-content" style="visibility: hidden;">
             <div class="col-md-4  p-3 h-100"> <!-- Added 'mr-3' class for right margin -->
                 <h2 class="text-center bold bottom-border">Your Profile</h2>
-                <div class="profile-pic ">
-                    <img src="https://cdn-icons-png.flaticon.com/512/579/579849.png" alt="Profile Picture">
+                <div class="px-4 py-2 mt-3"
+                    style="border: 1px solid #ccc;border-radius: 10px; box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); display: inline-block; width: 100%;">
+                    <div class="profile-pic ">
+                        <img src="https://cdn-icons-png.flaticon.com/512/579/579849.png" alt="Profile Picture"
+                            style="width:150px;height:150px;">
+                    </div>
+                    <h4 class="text-center bold py-2" id="name"></h4>
+                    <h6 class=" pt-2 bold"><i class="fa-solid fa-id-card"></i> <span id="roll"></span></h6>
+                    <h6 class=" pt-1 bold"><i class="fa-solid fa-graduation-cap"></i> <span id="class"></span></h6>
+                    <h6 class="pt-1 pb-1 bold" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                        <i class="fa fa-envelope" aria-hidden="true"></i>
+                        <span id="email"></span>
+                    </h6>
+
                 </div>
-                <h3 class="text-center bold py-2" id="name"></h3>
-                <h6 class=" bold pt-2"><i class="fa-solid fa-id-card"></i> <span id="roll"></span></h6>
-                <h6 class=" bold pt-1"><i class="fa-solid fa-graduation-cap"></i> <span id="class"></span></h6>
-                <h6 class=" bold pt-1"><i class="fa fa-envelope" aria-hidden="true"></i> <span id="email"></span></h6>
+
+                <h4 class="text-center bold bottom-border mt-3" style="justify-self: center;">Badges Awarded</h4>
+                <div class="flex-align">
+                    <div class="mt-4 py-3"
+                        style="border: 1px solid #ccc;border-radius: 10px; box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); display: inline-block; width: 100%;height: 100%; ">
+
+                        <div class="flex-align" style="height: 300px;" id="nobadge">
+                            <h6 style="align-self:center;" class="bold text-center"><i
+                                    class="fa-solid fa-face-sad-tear"></i> No Badges are Awarded to You</h6>
+                        </div>
+                        <div class="row">
+                            <style>
+                                /* Keyframes animation */
+                                @keyframes shine {
+                                    0% {
+                                        left: -50px;
+                                        opacity: 0;
+                                    }
+                                    50% {
+                                        opacity: 1;
+                                    }
+                                    100% {
+                                        left: 100%;
+                                        opacity: 0;
+                                    }
+                                }
+                        
+                                /* Apply the animation to the badge element */
+                                .shinebar {
+                                    position: relative;
+                                    width: 100%;
+                                    height: 140px; /* Set the height to match the image */
+                                    overflow: hidden;
+                                }
+                        
+                                .shinebar::before {
+                                    content: "";
+                                    position: absolute;
+                                    top: 0;
+                                    left: -50px;
+                                    width: 150%;
+                                    height: 100%;
+                                    background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 0) 100%);
+                                    animation: shine 2s linear infinite;
+                                }
+                            </style>
+                            <div class="flex-align col-6" id="perfectacademic" style="display:none;">
+                                <div class="shinebar">
+
+                                    <img src="https://i.ibb.co/MM2RSd8/1.png" width="140px" height="140px">
+                                </div>
+                            </div>
+                            <div class="flex-align col-6" id="perfectcompi" style="display:none;">
+                                <div class="shinebar">
+
+                                    <img src="https://i.ibb.co/DQYDPfx/2.png" width="140px" height="140px">
+                                </div>
+                            </div>
+                            <div class="flex-align col-6" id="excellentacademic" style="display:none;">
+                                <div class="shinebar">
+                                    <img src="https://i.ibb.co/dPCCxqg/3.png" width="140px" height="140px">
+                                </div>
+                           
+                            </div>
+                            <div class="flex-align col-6" id="excellentcompi" style="display:none;">
+                                <div class="shinebar">
+                                    <img src="https://i.ibb.co/YPrp54P/4.png" width="140px" height="140px">
+                                </div>
+                                
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
             </div>
             <div class="col-md-8 p-3">
                 <h2 class="text-center bold bottom-border">Performance Dashboard</h2>
@@ -229,7 +311,41 @@
                     </div>
                 </div>
 
+                <!-- BADGES information -->
+                <div class="col-12 mt-4">
+                    <div class="px-3 py-3"
+                        style="border: 1px solid #ccc;border-radius: 10px; box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); display: inline-block; width: 100%;">
+                        <h5 class="bold mt-2 mb-2 bottom-border-small text-center">How Badges are Awarded?</h5>
+                        <br>
+                        <h6><span class="bold mt-4 pb-2"><i class="fa-solid fa-arrow-right"></i> Perfect Academic Scorer
+                                100%</span> :-
+                            This award is bestowed upon students whose Academic Performance Percentage stands at a
+                            flawless 100%.</h6>
+                        <br>
+                        <h6><span class="bold pb-2"><i class="fa-solid fa-arrow-right"></i> Excellent Academic Scorer
+                                90%</span> :- This distinction is conferred upon students whose Academic Performance
+                            Percentage surpasses the threshold of 90%.</h6>
+                        <br>
+                        <h6><span class="bold pb-2"><i class="fa-solid fa-arrow-right"></i> Perfect Competitive Scorer
+                                100%</span> :- This award is bestowed upon students whose Competitive Performance
+                            Percentage stands at a flawless 100%</h6>
+                        <br>
+                        <h6><span class="bold pb-2"><i class="fa-solid fa-arrow-right"></i> Excellent Competitive Scorer
+                                90%</span> :- This distinction is conferred upon students whose Competitive Performance
+                            Percentage Percentage surpasses the threshold of 90%.</h6>
+
+                    </div>
+
+                </div>
+
+
+
+
+
+
             </div>
+
+
         </div>
 
 
@@ -245,6 +361,11 @@
             const ctspercentagetext = document.getElementById("cts-percentage-text")
             const atscircle = document.getElementById("atscircle")
             const ctscircle = document.getElementById("ctscircle")
+            const perfectacademic = document.getElementById("perfectacademic")
+            const perfectcompi = document.getElementById("perfectcompi")
+            const excellentcompi = document.getElementById("excellentcompi")
+          
+            const nobadge = document.getElementById("nobadge")
 
             function convertToWords(number) {
                 const words = [
@@ -278,7 +399,7 @@
                             console.log(data.data.name)
                             document.getElementById("name").innerText = data.data.name;
                             document.getElementById("roll").innerText = data.data.roll;
-                            document.getElementById("class").innerHTML = convertToWords(data.data.studentClass) +"<sup>th</sup>";
+                            document.getElementById("class").innerHTML = convertToWords(data.data.studentClass) + "<sup>th</sup>";
                             document.getElementById("email").innerText = data.data.email;
                             let atsfm = 0;
                             let atsob = 0;
@@ -313,17 +434,35 @@
                             ctspercentagetext.innerHTML = ctspercent + "%"
                             ctspercentage.setAttribute("stroke-dasharray", `${ctspercent},100`);
                             console.log(ctspercent)
-                         
-                          if(atsfm == 0){
-                            atscircle.innerHTML = ` <h4 style="height: 300px; align-self:center;padding-top:140px;" class="bold text-center"><i class="fa-solid fa-face-sad-tear"></i> No Data Exists</h4>`;
 
-                          }
-                          if(ctsfm == 0){
-                            ctscircle.innerHTML = ` <h4 style="height: 300px; align-self:center;padding-top:140px;" class="bold text-center"><i class="fa-solid fa-face-sad-tear"></i> No Data Exists</h4>`;
+                            if (atsfm == 0) {
+                                atscircle.innerHTML = ` <h4 style="height: 300px; align-self:center;padding-top:140px;" class="bold text-center"><i class="fa-solid fa-face-sad-tear"></i> No Data Exists</h4>`;
 
-                          }
+                            }
+                            if (ctsfm == 0) {
+                                ctscircle.innerHTML = ` <h4 style="height: 300px; align-self:center;padding-top:140px;" class="bold text-center"><i class="fa-solid fa-face-sad-tear"></i> No Data Exists</h4>`;
+
+                            }
+
+                            if (atspercent == 100) {
+                                console.log("badge 100",atspercent)
+                                nobadge.style.display = "none"
+                                perfectacademic.style.display = "block"
+                            }
+                            if (ctspercent == 100) {
+                                nobadge.style.display = "none"
+                                perfectcompi.style.display = "block"
+                            }
+                            if (atspercent >= 90) {
+                                console.log("badge 90",atspercent)
+                                nobadge.style.display = "none"
+                                document.getElementById("excellentacademic").style.display = "block"
                             
-
+                            }
+                            if (ctspercent >= 90) {
+                                nobadge.style.display = "none"
+                                excellentcompi.style.display = "block"
+                            }
 
 
 
