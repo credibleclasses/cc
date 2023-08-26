@@ -14,11 +14,22 @@ window.onload = function () {
             .then(data => {
                 console.log("Profile data:", data);
                 if (data.data && data.data.name) {
-                    loginStatus.innerHTML = `<h5 class="bold ms-3">${data.data.name}</h5>`;
+                    loginStatus.innerHTML = `     <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle alink bold" href="#" role="button" data-bs-toggle="dropdown"
+                       aria-expanded="false">
+                       ${data.data.name}
+                    </a>
+                    <ul class="dropdown-menu px-1 py-2" style="width: 240px;">
+                    <li class="py-1 "><a class=" underline-animation alink bold" href="profile.html"><i class="fa fa-user" aria-hidden="true"></i> My Profile</a></li>
+                        <li class="py-1 "><a class=" underline-animation alink bold" href="result.html"><i class="fa fa-list-alt" aria-hidden="true"></i> My Result</a></li>
+                        <li class="py-1"><a class=" underline-animation alink bold" href="attendance.html"><i class="fa fa-calendar" aria-hidden="true"></i> My Attendance</a></li>
+                        <li class="py-1 "><a class=" underline-animation alink bold" href="notes.html"><i class="fa-solid fa-book"></i> My Notes</a></li>
+                        <li class="py-1 "><a class="text-danger underline-animation alink bold" onclick="clearLocalStorage()"><i class="fa fa-sign-out" aria-hidden="true"></i> Log out</a></li>
+                    </ul>
+                </li>
+                   `;
                     const btnadmn = document.getElementById("adminbutton")
                     btnadmn.classList.add("d-lg-none")
-                    const logout = document.getElementById("logoutbutton")
-                    logout.classList.remove("none")
                 }
             })
             .catch(error => {
@@ -47,16 +58,16 @@ window.onload = function () {
             });
             const data = await response.json();
             console.log(data); // Log the response to the console
-            if (data.message == "User not found"){
+            if (data.message == "User not found") {
                 console.log("executed")
                 const loginresp = document.getElementById("loginresponse")
                 loginresp.innerHTML = ` <div class="alert alert-danger alert-dismissible fade show" role="alert" id="incorrectalert">
     <strong>Not Found!</strong> Incorrect username or password.
   </div>`
-  const alerttext = document.getElementById("incorrectalert")
-  setTimeout(function () {
-    alerttext.classList.add("none")
-}, 3000);
+                const alerttext = document.getElementById("incorrectalert")
+                setTimeout(function () {
+                    alerttext.classList.add("none")
+                }, 3000);
 
             }
             // Save the response to local storage
@@ -74,11 +85,24 @@ window.onload = function () {
                     .then(data => {
                         console.log("Profile data:", data);
                         if (data.data && data.data.name) {
-                            loginStatus.innerHTML = `<h5 class="bold ms-3">${data.data.name}</h5>`;
+                            loginStatus.innerHTML = `
+                            <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle alink bold" href="#" role="button" data-bs-toggle="dropdown"
+                               aria-expanded="false">
+                               ${data.data.name}
+                            </a>
+                            <ul class="dropdown-menu px-1 py-2" style="width: 240px;">
+                            <li class="py-1 "><a class=" underline-animation alink bold" href="profile.html"><i class="fa fa-user" aria-hidden="true"></i> My Profile</a></li>
+                                <li class="py-1 "><a class=" underline-animation alink bold" href="result.html"><i class="fa fa-list-alt" aria-hidden="true"></i> My Result</a></li>
+                                <li class="py-1"><a class=" underline-animation alink bold" href="attendance.html"><i class="fa fa-calendar" aria-hidden="true"></i> My Attendance</a></li>
+                                <li class="py-1 "><a class=" underline-animation alink bold" href="notes.html"><i class="fa-solid fa-book"></i> My Notes</a></li>
+                                <li class="py-1 "><a class="text-danger underline-animation alink bold" onclick="clearLocalStorage()"><i class="fa fa-sign-out" aria-hidden="true"></i> Log out</a></li>
+                            </ul>
+                        </li>
+                            `;
                             const btnadmn = document.getElementById("adminbutton")
                             btnadmn.classList.add("d-lg-none")
-                            const logout = document.getElementById("logoutbutton")
-                            logout.classList.remove("none")
+
                             const loginresp = document.getElementById("loginresponse")
                             loginresp.innerHTML = ` <div class="alert alert-success alert-dismissible fade show" role="alert">
                 <strong>Success!</strong> Successfully logged in,Please wait.
@@ -90,11 +114,11 @@ window.onload = function () {
 
 
                         }
-                      
+
                     })
                     .catch(error => {
                         console.error('Error fetching profile:', error);
-               
+
                     });
             }
 
