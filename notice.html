@@ -25,141 +25,82 @@
 
 <body>
 
+    <script>
+        function toggleBootstrapClasses() {
+        const navbar = document.getElementById('scrollNavbar');
+        const logo = document.querySelector('.navbar-brand img');
+        const loginButton = document.querySelector('#loginStatus button');
+        const navLinks = document.querySelectorAll('#navbarSupportedContent .nav-item a');
+        const dynamicThemeColorMeta = document.getElementById('dynamic-theme-color');
 
-    <div id="alert-container" class="position-absolute w-100 text-center" style="top: 0;"></div>
+        if (window.scrollY > 0) {
+            navbar.classList.add('bg-warning', 'position-fixed', 'w-100','top-0');
+        logo.style.height = '37px';
+        logo.style.width = '150px';
+        loginButton.classList.remove('btn-outline-warning');
+        loginButton.classList.add('btn-outline-dark');
+
+            navLinks.forEach(link => {
+            link.classList.add('underline-animation-scroll');
+        link.classList.remove('underline-animation');
+            });
+
+        // Change theme color to warning color on scroll
+        dynamicThemeColorMeta.setAttribute('content', '#FFC107');
+        } else {
+            navbar.classList.remove('bg-warning', 'position-fixed', 'w-100');
+        logo.style.height = '50px';
+        logo.style.width = '180px';
+        loginButton.classList.add('btn-outline-warning');
+        loginButton.classList.remove('btn-outline-dark');
+
+            navLinks.forEach(link => {
+            link.classList.remove('underline-animation-scroll');
+        link.classList.add('underline-animation');
+            });
+
+        // Change theme color to white when not scrolling
+        dynamicThemeColorMeta.setAttribute('content', '#FFFFFF');
+        }
+    }
+
+        window.addEventListener('scroll', toggleBootstrapClasses);
+    </script>
 
 
-    <nav class="navbar navbar-expand-lg d-flex justify-content-between mb-4">
+    <style>
+        /* Default styles for the navigation bar */
+        #scrollNavbar {
+            transition: background-color 0.5s, position 0.5s, width 0.5s;
+            z-index: 2;
+        }
+
+        /* Logo transition on scroll */
+        .navbar-brand img {
+            transition: height 0.5s, width 0.5s;
+        }
+    </style>
+    <nav id="scrollNavbar" class="navbar navbar-expand-lg d-flex justify-content-between mb-4">
         <div class="container">
             <a class="navbar-brand" href="index.html">
-              <img src="newlogo.png" alt="Credeible-2-1" alt="Credeible-1" alt="Logo" width="180" height="50"
-                    class="d-inline-block align-text-top">
+                <img src="https://i.ibb.co/3rdb8Bm/Picsart-23-08-24-21-26-47-462.png" alt="Credeible-2-1"
+                    alt="Credeible-1" alt="Logo" width="180" height="50" class="d-inline-block align-text-top">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse mx-md-3" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+            <div class="collapse navbar-collapse mx-md-2" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 mx-auto">
                     <li class="nav-item">
-                        <a class="underline-animation alink bold" id="nonvisiblenote" aria-current="page"
-                            onclick="notes()">Notes</a>
-                        <script>
-                            function notes() {
-                                const token = localStorage.getItem('token');
-
-                                if (token) {
-                                    window.location.href = 'notes.html'
-                                } else {
-                                    $('#custom-alert-modal').modal('show');
-                                }
-                            }
-                        </script>
-                        <!-- Modal -->
-                        <div class="modal fade" id="custom-alert-modal" tabindex="-1"
-                            aria-labelledby="custom-alert-modal-label" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h3 class="modal-title fs-5 bold" id="exampleModalLabel">Access Restricted</h3>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <h6>To view notes you must log in your account first</h6>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-warning"
-                                            data-bs-dismiss="modal">Okay</button>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- log in modal -->
-                    </li>
-                    <li class="nav-item">
-                        <a class="underline-animation alink bold " aria-current="page" onclick="result()">Result</a>
-
-                        <script>
-                            function result() {
-                                const token = localStorage.getItem('token');
-
-                                if (token) {
-                                    window.location.href = 'result.html'
-                                } else {
-                                    $('#custom-alert-modal1').modal('show');
-                                }
-                            }
-                        </script>
-                        <!-- Modal -->
-                        <div class="modal fade" id="custom-alert-modal1" tabindex="-1"
-                            aria-labelledby="custom-alert-modal-label" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h3 class="modal-title fs-5 bold" id="exampleModalLabel">Access Restricted</h3>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <h6>To check your result you must log in your account first</h6>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-warning"
-                                            data-bs-dismiss="modal">Okay</button>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-
-
-
-
-                    </li>
-                    <li class="nav-item">
-                        <a class="underline-animation alink bold" id="nonvisiblenote" aria-current="page"
-                            onclick="attendance()">Attendance</a>
-                        <script>
-                            function attendance() {
-                                const token = localStorage.getItem('token');
-
-                                if (token) {
-                                    window.location.href = 'attendance.html'
-                                } else {
-                                    $('#custom-alert-modal3').modal('show');
-                                }
-                            }
-                        </script>
-                        <!-- Modal -->
-                        <div class="modal fade" id="custom-alert-modal3" tabindex="-1"
-                            aria-labelledby="custom-alert-modal-label" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                  <div class="modal-header">
-                                    <h3 class="modal-title fs-5 bold" id="exampleModalLabel">Access Restricted</h3>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                  </div>
-                                  <div class="modal-body">
-                                  <h6>To view your Attendance you must log in your account</h6>  
-                                  </div>
-                                  <div class="modal-footer">
-                                    <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Okay</button>
-                                  
-                                  </div>
-                                </div>
-                              </div>
-                        </div>
-                    <li class="nav-item">
-                        <a class="alink bold  active" aria-current="page" href="#">Notice</a>
+                        <a class="underline-animation-scroll alink bold" aria-current="page" href="index.html">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="underline-animation alink bold" aria-current="page" href="course.html">Courses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="underline-animation alink bold" aria-current="page" href="notice.html">Notice</a>
                     </li>
                     <li class="nav-item">
                         <a class="underline-animation alink bold" aria-current="page" href="about.html">About</a>
@@ -173,19 +114,13 @@
                             data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fa-solid fa-key"></i>
                             Student Log in</button>
                     </div>
-
-               
-                    <a id="adminbutton"
-                        class=" d-none d-md-block none"
-                        ></a>
+                    <a id="adminbutton" class=" d-none d-md-block none"></a>
                 </div>
-                <a id="logoutbutton" class="ms-3 mb-1 btn btn-sm btn-danger custom-border none"
-                    onclick="clearLocalStorage()">Log out</a>
 
             </div>
             <script>function clearLocalStorage() {
-                    localStorage.clear();
-                    location.href = "index.html"
+            localStorage.clear();
+        location.href="index.html"
                 }
             </script>
         </div>
@@ -237,52 +172,7 @@
 
 
 
-    <div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-        aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered my-custom-modal" id="modelbox">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Admin Log in</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="conatiner">
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">Username</label>
-                            <input type="text" class="form-control" value="" id="admin_username"
-                                placeholder="Enter Provided Username">
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">Password</label>
-                            <input type="password" class="form-control" value="" id="admin_password"
-                                placeholder="Enter Provided Password">
-                        </div>
-                        <div class="mb-1">
-                            <style>
-                                /* Increase the size of the checkbox */
-                                .larger-checkbox {
-                                    transform: scale(1.5);
-                                    /* Adjust the scale factor as needed */
-                                    margin-right: 8px;
-                                    /* Add some spacing between the checkbox and label */
-                                }
-                            </style>
-                            <input type="checkbox" id="toggleCheckbox" class="larger-checkbox" onclick="toggleAction()">
-                            <label for="toggleCheckbox" class="form-label  ms-1">Autofill Details</label>
-                        </div>
-                    </div>
-                    <p class="text-danger text-sm-start" id="adminErroOnIncomplete"></p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger custom-border2" data-bs-dismiss="modal"> Cancel</button>
 
-
-                    <button type="button" class="btn btn-warning custom-border2" id="admin_login"
-                        onclick="adminlogin()"> Log in & Continue to Dashboard</button>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- new adahsjhasdhasufdhajsfhajkslhfcjksd  -->
     <div class="container mt-5 mb-3">
