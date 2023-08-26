@@ -21,6 +21,63 @@
     <link rel="shortcut icon" href="https://i.ibb.co/B3Wd2Wd/IMG-20230807-WA0020.jpg" type="image/x-icon">
 
     <title>About - Credible Classes</title>
+
+    <script>
+        function toggleBootstrapClasses() {
+        const navbar = document.getElementById('scrollNavbar');
+        const logo = document.querySelector('.navbar-brand img');
+        const loginButton = document.querySelector('#loginStatus button');
+        const navLinks = document.querySelectorAll('#navbarSupportedContent .nav-item a');
+        const dynamicThemeColorMeta = document.getElementById('dynamic-theme-color');
+
+        if (window.scrollY > 0) {
+            navbar.classList.add('bg-warning', 'position-fixed', 'w-100','top-0','z-index-n2');
+        logo.style.height = '37px';
+        logo.style.width = '150px';
+        loginButton.classList.remove('btn-outline-warning');
+        loginButton.classList.add('btn-outline-dark');
+
+            navLinks.forEach(link => {
+            link.classList.add('underline-animation-scroll');
+        link.classList.remove('underline-animation');
+            });
+
+        // Change theme color to warning color on scroll
+        dynamicThemeColorMeta.setAttribute('content', '#FFC107');
+        } else {
+            navbar.classList.remove('bg-warning', 'position-fixed', 'w-100');
+        logo.style.height = '50px';
+        logo.style.width = '180px';
+        loginButton.classList.add('btn-outline-warning');
+        loginButton.classList.remove('btn-outline-dark');
+
+            navLinks.forEach(link => {
+            link.classList.remove('underline-animation-scroll');
+        link.classList.add('underline-animation');
+            });
+
+        // Change theme color to white when not scrolling
+        dynamicThemeColorMeta.setAttribute('content', '#FFFFFF');
+        }
+    }
+
+        window.addEventListener('scroll', toggleBootstrapClasses);
+    </script>
+
+
+    <style>
+        /* Default styles for the navigation bar */
+        #scrollNavbar {
+            transition: background-color 0.5s, position 0.5s, width 0.5s;
+            z-index: 2;
+        }
+
+        /* Logo transition on scroll */
+        .navbar-brand img {
+            transition: height 0.5s, width 0.5s;
+        }
+    </style>
+
 </head>
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Arvo&display=swap');
@@ -90,141 +147,30 @@
 
     <div id="alert-container" class="position-absolute w-100 text-center" style="top: 0;"></div>
 
-
-    <nav class="navbar navbar-expand-lg d-flex justify-content-between mb-4">
+    <nav id="scrollNavbar" class="navbar navbar-expand-lg d-flex justify-content-between mb-4">
         <div class="container">
             <a class="navbar-brand" href="index.html">
-                     <img src="newlogo.png" alt="Credeible-2-1" alt="Credeible-1" alt="Logo" width="180" height="50"
-                    class="d-inline-block align-text-top">
+                <img src="https://i.ibb.co/3rdb8Bm/Picsart-23-08-24-21-26-47-462.png" alt="Credeible-2-1"
+                    alt="Credeible-1" alt="Logo" width="180" height="50" class="d-inline-block align-text-top">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse mx-md-3" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+            <div class="collapse navbar-collapse mx-md-2" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 mx-auto">
                     <li class="nav-item">
-                        <a class="underline-animation alink bold" id="nonvisiblenote" aria-current="page"
-                            onclick="notes()">Notes</a>
-                        <script>
-                            function notes() {
-                                const token = localStorage.getItem('token');
-
-                                if (token) {
-                                    window.location.href = 'notes.html'
-                                } else {
-                                    $('#custom-alert-modal').modal('show');
-                                }
-                            }
-                        </script>
-                        <!-- Modal -->
-                        <div class="modal fade" id="custom-alert-modal" tabindex="-1"
-                            aria-labelledby="custom-alert-modal-label" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h3 class="modal-title fs-5 bold" id="exampleModalLabel">Access Restricted</h3>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <h6>To view notes you must log in your account first</h6>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-warning"
-                                            data-bs-dismiss="modal">Okay</button>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <!-- log in modal -->
-                    </li>
-                    <li class="nav-item">
-                        <a class="underline-animation alink bold " aria-current="page" onclick="result()">Result</a>
-
-                        <script>
-                            function result() {
-                                const token = localStorage.getItem('token');
-
-                                if (token) {
-                                    window.location.href = 'result.html'
-                                } else {
-                                    $('#custom-alert-modal1').modal('show');
-                                }
-                            }
-                        </script>
-                        <!-- Modal -->
-                        <div class="modal fade" id="custom-alert-modal1" tabindex="-1"
-                            aria-labelledby="custom-alert-modal-label" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h3 class="modal-title fs-5 bold" id="exampleModalLabel">Access Restricted</h3>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <h6>To check your result you must log in your account first</h6>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-warning"
-                                            data-bs-dismiss="modal">Okay</button>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                      <li class="nav-item">
-                            <a class="underline-animation alink bold" id="nonvisiblenote" aria-current="page"
-                                onclick="attendance()">Attendance</a>
-                            <script>
-                                function attendance() {
-                                    const token = localStorage.getItem('token');
-    
-                                    if (token) {
-                                        window.location.href = 'attendance.html'
-                                    } else {
-                                        $('#custom-alert-modal3').modal('show');
-                                    }
-                                }
-                            </script>
-                            <!-- Modal -->
-                            <div class="modal fade" id="custom-alert-modal3" tabindex="-1"
-                                aria-labelledby="custom-alert-modal-label" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                      <div class="modal-header">
-                                        <h3 class="modal-title fs-5 bold" id="exampleModalLabel">Access Restricted</h3>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                      </div>
-                                      <div class="modal-body">
-                                      <h6>To view your Attendance you must log in your account</h6>  
-                                      </div>
-                                      <div class="modal-footer">
-                                        <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Okay</button>
-                                      
-                                      </div>
-                                    </div>
-                                  </div>
-                            </div>
-
-
-
-
-                    </li>
-                    <li class="nav-item">
-                        <a class="alink bold underline-animation " aria-current="page" href="notice.html">Notice</a>
+                        <a class="underline-animation-scroll alink bold" aria-current="page" href="index.html">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="underline-animation alink bold" aria-current="page" href="course.html">Courses</a>
                     </li>
                     <li class="nav-item">
-                        <a class=" alink bold active" aria-current="page" href="about.html">About</a>
+                        <a class="underline-animation alink bold" aria-current="page" href="notice.html">Notice</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="underline-animation alink bold" aria-current="page" href="about.html">About</a>
                     </li>
 
                 </ul>
@@ -235,24 +181,19 @@
                             data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fa-solid fa-key"></i>
                             Student Log in</button>
                     </div>
-
-            
-                    <a id="adminbutton"
-                        class=" d-none d-md-block none"
-                        ></a>
+                    <a id="adminbutton" class=" d-none d-md-block none"></a>
                 </div>
-                <a id="logoutbutton" class="ms-3 mb-1 btn btn-sm btn-danger custom-border none"
-                    onclick="clearLocalStorage()">Log out</a>
 
             </div>
             <script>function clearLocalStorage() {
-                    localStorage.clear();
-                    location.href = "index.html"
+            localStorage.clear();
+        location.href="index.html"
                 }
             </script>
         </div>
         </div>
     </nav>
+
     <!-- Modal -->
 
 
@@ -349,13 +290,13 @@
     <!-- new adahsjhasdhasufdhajsfhajkslhfcjksd  -->
 
     <div class="container mt-5 mb-3 flex-justify ">
-        <h1 class="text-center bold bottom-border slide-animation ">About Credible Classes</h1>
+        <h1 class="text-center bold bottom-border  ">About Credible Classes</h1>
     </div>
     <div class="container mb-3">
-        <h2 class="text-center bold bottom-border slide-animation ">Introduction</h2>
+        <h2 class="text-center bold bottom-border  ">Introduction</h2>
     </div>
     <div class="container">
-        <div class="row flex-align slide-animation container">
+        <div class="row flex-align  container">
             <div class="col-md-6">
                 <h5 class="cursive bold">Credible Classes, established in 2020, is not just an institute but also plays
                     a pivotal role in instilling confidence and building strong fundamentals in students. It stands as
@@ -369,7 +310,7 @@
                     are well-prepared to excel in competitive exams. Our goal is to secure the selection of students in
                     these highly competitive exams by providing the appropriate level of guidance and support.</h5>
             </div>
-            <div class="col-md-6 slide-animation">
+            <div class="col-md-6 ">
                 <img class="d-inline-block pvimg1 img-fluid mb-2" src="https://i.ibb.co/1QMtBq6/IMG-20230807-WA0000.jpg"
                     id="pvimg1"><br>
             </div>
@@ -378,39 +319,39 @@
     </div>
     <div class="container mt-5">
         <div class="mb-3">
-            <h2 class="text-center bold bottom-border slide-animation mb-3">Features</h2>
+            <h2 class="text-center bold bottom-border  mb-3">Features</h2>
             <ul style="list-style: disc;" class="listmargin">
                 <li>
-                    <h5 class="cursive bold slide-animation pb-2 pt-3">&#10148; Monthly academic test series (ATS) and
+                    <h5 class="cursive bold  pb-2 pt-3">&#10148; Monthly academic test series (ATS) and
                         competitive test series (CTS) to analyze progress of students.</h5>
                 </li>
                 <li>
-                    <h5 class="cursive bold slide-animation pb-2">&#10148; Air-conditioned classroom.</h5>
+                    <h5 class="cursive bold  pb-2">&#10148; Air-conditioned classroom.</h5>
                 </li>
                 <li>
-                    <h5 class="cursive bold slide-animation pb-2">&#10148; Access to high quality R.O drinking water.
+                    <h5 class="cursive bold  pb-2">&#10148; Access to high quality R.O drinking water.
                     </h5>
                 </li>
                 <li>
-                    <h5 class="cursive bold slide-animation pb-2">&#10148; CCTV camera for high security</h5>
+                    <h5 class="cursive bold  pb-2">&#10148; CCTV camera for high security</h5>
                 </li>
                 <li>
-                    <h5 class="cursive bold slide-animation pb-2">&#10148; Easy access to notes and results by students
+                    <h5 class="cursive bold  pb-2">&#10148; Easy access to notes and results by students
                         and parents.</h5>
                 </li>
                 <li>
-                    <h5 class="cursive bold slide-animation pb-2">&#10148; Separate batch for academic syllabus and
+                    <h5 class="cursive bold  pb-2">&#10148; Separate batch for academic syllabus and
                         competitive syllabus.</h5>
                 </li>
                 <li>
-                    <h5 class="cursive bold slide-animation pb-2">&#10148; Excellent quality of notes and modules.</h5>
+                    <h5 class="cursive bold  pb-2">&#10148; Excellent quality of notes and modules.</h5>
                 </li>
                 <li>
-                    <h5 class="cursive bold slide-animation pb-2">&#10148; Exam answer sheet designed as per boards
+                    <h5 class="cursive bold  pb-2">&#10148; Exam answer sheet designed as per boards
                         examination and competitive examination.</h5>
                 </li>
                 <li>
-                    <h5 class="cursive bold slide-animation pb-2">&#10148; Doubt class for each subject.</h5>
+                    <h5 class="cursive bold  pb-2">&#10148; Doubt class for each subject.</h5>
                 </li>
 
 
@@ -420,20 +361,20 @@
     </div>
 
     <div class="container mt-3">
-        <h2 class="text-center bold bottom-border slide-animation mb-3">Director's Desk</h2>
+        <h2 class="text-center bold bottom-border  mb-3">Director's Desk</h2>
         <div class="row">
 
             <div class="col-md-4 flex-align mt-3 "><img src="https://i.ibb.co/xzpFBTB/1691397011888-01.jpg"
-                    alt="Founder's Photo" class="img-fluid slide-animation" style="width: 90%; height: 90%;">
+                    alt="Founder's Photo" class="img-fluid " style="width: 90%; height: 90%;">
             </div>
             <div class="col-md-8 mt-5">
-                <h3 class="bold slide-animation centertxt">Mr. Rupesh Shrivastava  </h3><h4 style="color: grey;" class="slide-animation centertxt bold">(Founder and
+                <h3 class="bold  centertxt">Mr. Rupesh Shrivastava  </h3><h4 style="color: grey;" class=" centertxt bold">(Founder and
                         Director)</h4>
                
-                <h5 class="cursive bold mt-5 slide-animation">The career of student are influenced by three guidance force, their own
+                <h5 class="cursive bold mt-5 ">The career of student are influenced by three guidance force, their own
                     effort, the effort of their parents and teachers. Credible classes setup for aspiring students by
                     Mr. Rupesh Shrivastava.</h5>
-                <h5 class="cursive bold mt-1 slide-animation">  He taught and directed over 1000 students with teaching experience of 7+ years. His vision is to build confidence and character in aspirants and students, specially for those who prepare for competitive exam
+                <h5 class="cursive bold mt-1 ">  He taught and directed over 1000 students with teaching experience of 7+ years. His vision is to build confidence and character in aspirants and students, specially for those who prepare for competitive exam
                     in pre-foundation batches at an early age. Many students get benefit from his motivation and excellent way of teaching.
     <br>
                     He nurtures many young minds and build a system for both prodigy students and feeble students to success in their life.</h5>
