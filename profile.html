@@ -187,7 +187,7 @@
                             style="width:150px;height:150px;">
                     </div>
                     <h4 class="text-center bold py-2" id="name"></h4>
-                    <h6 class=" pt-2 bold"><i class="fa-solid fa-trophy"></i> <span id="topper"></span></h6>
+                    <h6 type="button" class=" pt-2 bold"><i class="fa-solid fa-trophy" data-toggle="tooltip" data-placement="top" title="Based on Your Most Recent Exam Percentage"></i> <span id="topper"></span></h6>
                     <h6 class=" pt-1 bold"><i class="fa-solid fa-graduation-cap"></i> <span id="class"></span></h6>
                     <h6 class="pt-1 pb-1 bold" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
                         <i class="fa fa-envelope" aria-hidden="true"></i>
@@ -228,7 +228,7 @@
                                 .shinebar {
                                     position: relative;
                                     width: 100%;
-                                    height: 150px;
+                                    height: 145px;
                                     /* Set the height to match the image */
                                     overflow: hidden;
                                 }
@@ -244,54 +244,68 @@
                                     animation: shine 2s linear infinite;
                                 }
                             </style>
-                            <div class="flex-align col-6" id="perfectacademic" style="display:none;">
-                                <div class="shinebar">
+                         <div class="flex-align col-6" id="perfectacademic" style="display:none;">
+                            <div class="shinebar">
 
-                                    <img src="https://i.ibb.co/mDVfmG6/Picsart-23-08-27-00-28-07-921.png" width="150px"
-                                        height="150px">
-                                </div>
+                                <img src="https://i.ibb.co/mDVfmG6/Picsart-23-08-27-00-28-07-921.png" width="150px"
+                                    height="150px">
                             </div>
-                            <div class="flex-align col-6 mb-2" id="perfectcompi" style="display:none;">
-                                <div class="shinebar">
+                        </div>
+                        <div class="flex-align col-6 mb-2" id="perfectcompi" style="display:none;">
+                            <div class="shinebar">
 
-                                    <img src=" https://i.ibb.co/F5kMS8n/Picsart-23-08-27-00-28-50-572.png
-                                    " width="150px"
-                                        height="150px">
-                                </div>
-                            </div>
-
-                            <div class="flex-align col-6" id="excellentacademic" style="display:none;">
-                                <div class="shinebar">
-                                    <img src="https://i.ibb.co/pL5nGJG/Picsart-23-08-27-00-29-54-098.png" width="150px"
-                                        height="150px">
-                                </div>
-
-                            </div>
-                            <div class="flex-align col-6 mb-1" id="excellentcompi" style="display:none;">
-                                <div class="shinebar">
-                                    <img src="https://i.ibb.co/K5RfCf4/Picsart-23-08-27-00-30-18-008.png" width="150px"
-                                        height="150px">
-                                </div>
-
-                            </div>
-                            <div class="flex-align col-6 mb-1" id="averageacademic" style="display:none;">
-                                <div class="shinebar">
-                                    <img src=" https://i.ibb.co/RBfdzN0/Picsart-23-08-27-08-28-48-716.png" width="150px"
-                                        height="150px">
-                                </div>
-
-                            </div>
-                            <div class="flex-align col-6 mb-1" id="averagecompi" style="display:none;">
-                                <div class="shinebar">
-                                    <img src="https://i.ibb.co/4JZqhvQ/Picsart-23-08-27-08-29-17-151.png" width="150px"
-                                        height="150px">
-                                </div>
-
+                                <img src=" https://i.ibb.co/F5kMS8n/Picsart-23-08-27-00-28-50-572.png
+                                " width="150px"
+                                    height="150px">
                             </div>
                         </div>
 
+                        <div class="flex-align col-6" id="excellentacademic" style="display:none;">
+                            <div class="shinebar">
+                                <img src="https://i.ibb.co/pL5nGJG/Picsart-23-08-27-00-29-54-098.png" width="150px"
+                                    height="150px">
+                            </div>
+
+                        </div>
+                        <div class="flex-align col-6 mb-1" id="excellentcompi" style="display:none;">
+                            <div class="shinebar">
+                                <img src="https://i.ibb.co/K5RfCf4/Picsart-23-08-27-00-30-18-008.png" width="150px"
+                                    height="150px">
+                            </div>
+
+                        </div>
+                        <div class="flex-align col-6 mb-1" id="averageacademic" style="display:none;">
+                            <div class="shinebar">
+                                <img src=" https://i.ibb.co/RBfdzN0/Picsart-23-08-27-08-28-48-716.png" width="150px"
+                                    height="150px">
+                            </div>
+
+                        </div>
+                        <div class="flex-align col-6 mb-1" id="averagecompi" style="display:none;">
+                            <div class="shinebar">
+                                <img src="https://i.ibb.co/4JZqhvQ/Picsart-23-08-27-08-29-17-151.png" width="150px"
+                                    height="150px">
+                            </div>
+
+                            </div>
+                        </div>
                     </div>
+
+
                 </div>
+                <div class="mt-4">
+                    <div class="px-3 py-3"
+                        style="border: 1px solid #ccc;border-radius: 10px; box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); display: inline-block; width: 100%;">
+                        <h6 class="bold mt-2 mb-2 bottom-border-small text-center">How Do I Maintain My Badges?</h6>
+                        <h6><span class="bold mt-4 pb-2"><i class="fa-solid fa-arrow-right"></i> Consistent Scorer Badge</span> :- Aim for 85% or above in every ATS and CTS Examination</h6>
+                        <h6><span class="bold pb-2"><i class="fa-solid fa-arrow-right"></i> Steady Scorer Badge</span> :- :- Aim for 75% or above in every ATS and CTS Examination</h6>
+                        <h6><span class="bold pb-2"><i class="fa-solid fa-arrow-right"></i> Average Scorer Badge</span> :- :- Aim for 65% or above in every ATS and CTS Examination</h6>
+                    </div>
+
+                </div>
+
+
+
             </div>
             <div class="col-md-8 p-3">
                 <h2 class="text-center bold bottom-border">Performance Dashboard</h2>
@@ -379,6 +393,7 @@
 
 
         <script>
+
             const atspercentage = document.getElementById("ats-percentage")
             const atspercentagetext = document.getElementById("ats-percentage-text")
             const ctspercentage = document.getElementById("cts-percentage")
