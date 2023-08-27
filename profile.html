@@ -187,7 +187,7 @@
                             style="width:150px;height:150px;">
                     </div>
                     <h4 class="text-center bold py-2" id="name"></h4>
-                    <h6 class=" pt-2 bold"><i class="fa-solid fa-id-card"></i> <span id="roll"></span></h6>
+                    <h6 class=" pt-2 bold"><i class="fa-solid fa-trophy"></i> <span id="topper"></span></h6>
                     <h6 class=" pt-1 bold"><i class="fa-solid fa-graduation-cap"></i> <span id="class"></span></h6>
                     <h6 class="pt-1 pb-1 bold" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
                         <i class="fa fa-envelope" aria-hidden="true"></i>
@@ -213,23 +213,26 @@
                                         left: -50px;
                                         opacity: 0;
                                     }
+
                                     50% {
                                         opacity: 1;
                                     }
+
                                     100% {
                                         left: 100%;
                                         opacity: 0;
                                     }
                                 }
-                        
+
                                 /* Apply the animation to the badge element */
                                 .shinebar {
                                     position: relative;
                                     width: 100%;
-                                    height: 150px; /* Set the height to match the image */
+                                    height: 150px;
+                                    /* Set the height to match the image */
                                     overflow: hidden;
                                 }
-                        
+
                                 .shinebar::before {
                                     content: "";
                                     position: absolute;
@@ -244,27 +247,32 @@
                             <div class="flex-align col-6" id="perfectacademic" style="display:none;">
                                 <div class="shinebar">
 
-                                    <img src="https://i.ibb.co/mbWfsWM/Picsart-23-08-26-22-16-45-694.png" width="150px" height="150px">
+                                    <img src="https://i.ibb.co/mDVfmG6/Picsart-23-08-27-00-28-07-921.png" width="150px"
+                                        height="150px">
                                 </div>
                             </div>
                             <div class="flex-align col-6 mb-2" id="perfectcompi" style="display:none;">
                                 <div class="shinebar">
 
-                                    <img src="https://i.ibb.co/vZ2LNFZ/Picsart-23-08-26-22-17-10-165.png" width="150px" height="150px">
+                                    <img src=" https://i.ibb.co/F5kMS8n/Picsart-23-08-27-00-28-50-572.png
+                                    " width="150px"
+                                        height="150px">
                                 </div>
                             </div>
 
                             <div class="flex-align col-6" id="excellentacademic" style="display:none;">
                                 <div class="shinebar">
-                                    <img src="https://i.ibb.co/W2KVMnf/Picsart-23-08-26-22-19-38-885.png" width="150px" height="150px">
+                                    <img src="https://i.ibb.co/pL5nGJG/Picsart-23-08-27-00-29-54-098.png" width="150px"
+                                        height="150px">
                                 </div>
-                           
+
                             </div>
                             <div class="flex-align col-6 mb-1" id="excellentcompi" style="display:none;">
                                 <div class="shinebar">
-                                    <img src="https://i.ibb.co/qnds6nf/Picsart-23-08-26-22-18-22-292.png" width="150px" height="150px">
+                                    <img src="https://i.ibb.co/K5RfCf4/Picsart-23-08-27-00-30-18-008.png" width="150px"
+                                        height="150px">
                                 </div>
-                                
+
                             </div>
                         </div>
 
@@ -318,22 +326,17 @@
                         style="border: 1px solid #ccc;border-radius: 10px; box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); display: inline-block; width: 100%;">
                         <h5 class="bold mt-2 mb-2 bottom-border-small text-center">How Badges are Awarded?</h5>
                         <br>
-                        <h6><span class="bold mt-4 pb-2"><i class="fa-solid fa-arrow-right"></i> Perfect Academic Scorer
-                                100%</span> :-
-                            This award is bestowed upon students whose Academic Performance Percentage stands at a
-                            flawless 100%.</h6>
+                        <h6><span class="bold mt-4 pb-2"><i class="fa-solid fa-arrow-right"></i> Consistent Academic Scorer</span> :-
+                            This award is bestowed upon students whose Academic Performance Percentage surpasses the threshold of 85%.</h6>
                         <br>
-                        <h6><span class="bold pb-2"><i class="fa-solid fa-arrow-right"></i> Excellent Academic Scorer
-                                90%</span> :- This distinction is conferred upon students whose Academic Performance
-                            Percentage surpasses the threshold of 90%.</h6>
+                        <h6><span class="bold pb-2"><i class="fa-solid fa-arrow-right"></i> Steady Academic Scorer</span> :- This distinction is conferred upon students whose Academic Performance
+                            Percentage stays between 75% to 85%</h6>
                         <br>
-                        <h6><span class="bold pb-2"><i class="fa-solid fa-arrow-right"></i> Perfect Competitive Scorer
-                                100%</span> :- This award is bestowed upon students whose Competitive Performance
-                            Percentage stands at a flawless 100%</h6>
+                        <h6><span class="bold pb-2"><i class="fa-solid fa-arrow-right"></i> Consistent Competitive Scorer</span> :- This award is bestowed upon students whose Competitive Performance
+                            Percentage surpasses the threshold of 85%.</h6>
                         <br>
-                        <h6><span class="bold pb-2"><i class="fa-solid fa-arrow-right"></i> Excellent Competitive Scorer
-                                90%</span> :- This distinction is conferred upon students whose Competitive Performance
-                            Percentage Percentage surpasses the threshold of 90%.</h6>
+                        <h6><span class="bold pb-2"><i class="fa-solid fa-arrow-right"></i> Steady Competitive Scorer</span> :- This distinction is conferred upon students whose Competitive Performance
+                            Percentage Percentage stays between 75% to 85%</h6>
 
                     </div>
 
@@ -365,7 +368,7 @@
             const perfectacademic = document.getElementById("perfectacademic")
             const perfectcompi = document.getElementById("perfectcompi")
             const excellentcompi = document.getElementById("excellentcompi")
-          
+
             const nobadge = document.getElementById("nobadge")
 
             function convertToWords(number) {
@@ -399,7 +402,7 @@
                             console.log("New Profile data:", data);
                             console.log(data.data.name)
                             document.getElementById("name").innerText = data.data.name;
-                            document.getElementById("roll").innerText = data.data.roll;
+                            // document.getElementById("roll").innerText = data.data.roll;
                             document.getElementById("class").innerHTML = convertToWords(data.data.studentClass) + "<sup>th</sup>";
                             document.getElementById("email").innerText = data.data.email;
                             let atsfm = 0;
@@ -431,6 +434,34 @@
                                 }
 
                             }
+                            let exammonth = "To be Determined Soon"
+                            function convertDate(inputDate,award) {
+                                const months = [
+                                    "January", "February", "March", "April", "May", "June",
+                                    "July", "August", "September", "October", "November", "December"
+                                ];
+
+                                const [year, month] = inputDate.split("-");
+                                const monthName = months[parseInt(month) - 1];
+
+                                return `${monthName} ${award}`;
+                            }
+                            for (let i = 0; i < data.data.results.length; i++) {
+                                let percent = ((data.data.results[i].Obtained_Marks/data.data.results[i].Full_Marks)*100).toFixed(0)
+                                if (percent >= 90) {
+                                    exammonth = convertDate(data.data.results[i].Exam_Date,"Peak Scorer")
+                                }
+                                if (percent < 90 && percent >= 75) {
+                                    exammonth = convertDate(data.data.results[i].Exam_Date,"Good Scorer")
+                                }
+                                if (percent < 75 && percent >= 65) {
+                                    exammonth = convertDate(data.data.results[i].Exam_Date,"Average Scorer")
+                                }
+                                if (percent < 65) {
+                                    exammonth = convertDate(data.data.results[i].Exam_Date,"Bad Scorer")
+                                }
+                            }
+                            document.getElementById("topper").innerText = exammonth
                             const ctspercent = ((ctsob / ctsfm) * 100).toFixed(0)
                             ctspercentagetext.innerHTML = ctspercent + "%"
                             ctspercentage.setAttribute("stroke-dasharray", `${ctspercent},100`);
@@ -445,22 +476,22 @@
 
                             }
 
-                            if (atspercent == 100) {
-                                console.log("badge 100",atspercent)
+                            if (atspercent >= 85) {
+                                console.log("badge 100", atspercent)
                                 nobadge.style.display = "none"
                                 perfectacademic.style.display = "block"
                             }
-                            if (ctspercent == 100) {
+                            if (ctspercent >= 85) {
                                 nobadge.style.display = "none"
                                 perfectcompi.style.display = "block"
                             }
-                            if (atspercent >= 90) {
-                                console.log("badge 90",atspercent)
+                            if (atspercent < 85 && atspercent >=75 ) {
+                                console.log("badge 90", atspercent)
                                 nobadge.style.display = "none"
                                 document.getElementById("excellentacademic").style.display = "block"
-                            
+
                             }
-                            if (ctspercent >= 90) {
+                            if (ctspercent < 85 && ctspercent >=75) {
                                 nobadge.style.display = "none"
                                 excellentcompi.style.display = "block"
                             }
