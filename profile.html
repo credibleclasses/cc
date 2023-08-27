@@ -274,6 +274,20 @@
                                 </div>
 
                             </div>
+                            <div class="flex-align col-6 mb-1" id="averageacademic" style="display:none;">
+                                <div class="shinebar">
+                                    <img src=" https://i.ibb.co/RBfdzN0/Picsart-23-08-27-08-28-48-716.png" width="150px"
+                                        height="150px">
+                                </div>
+
+                            </div>
+                            <div class="flex-align col-6 mb-1" id="averagecompi" style="display:none;">
+                                <div class="shinebar">
+                                    <img src="https://i.ibb.co/4JZqhvQ/Picsart-23-08-27-08-29-17-151.png" width="150px"
+                                        height="150px">
+                                </div>
+
+                            </div>
                         </div>
 
                     </div>
@@ -332,11 +346,17 @@
                         <h6><span class="bold pb-2"><i class="fa-solid fa-arrow-right"></i> Steady Academic Scorer</span> :- This distinction is conferred upon students whose Academic Performance
                             Percentage stays between 75% to 85%</h6>
                         <br>
+                        <h6><span class="bold pb-2"><i class="fa-solid fa-arrow-right"></i> Average Academic Scorer</span> :- This distinction is conferred upon students whose Academic Performance
+                            Percentage stays between 65% to 75%</h6>
+                        <br>
                         <h6><span class="bold pb-2"><i class="fa-solid fa-arrow-right"></i> Consistent Competitive Scorer</span> :- This award is bestowed upon students whose Competitive Performance
                             Percentage surpasses the threshold of 85%.</h6>
                         <br>
                         <h6><span class="bold pb-2"><i class="fa-solid fa-arrow-right"></i> Steady Competitive Scorer</span> :- This distinction is conferred upon students whose Competitive Performance
                             Percentage Percentage stays between 75% to 85%</h6>
+                        <br>
+                        <h6><span class="bold pb-2"><i class="fa-solid fa-arrow-right"></i> Average Competitive Scorer</span> :- This distinction is conferred upon students whose Competitive Performance
+                            Percentage Percentage stays between 65% to 75%</h6>
 
                     </div>
 
@@ -366,8 +386,10 @@
             const atscircle = document.getElementById("atscircle")
             const ctscircle = document.getElementById("ctscircle")
             const perfectacademic = document.getElementById("perfectacademic")
+            const averageacademic = document.getElementById("averageacademic")
             const perfectcompi = document.getElementById("perfectcompi")
             const excellentcompi = document.getElementById("excellentcompi")
+            const averagecompi = document.getElementById("averagecompi")
 
             const nobadge = document.getElementById("nobadge")
 
@@ -481,6 +503,11 @@
                                 nobadge.style.display = "none"
                                 perfectacademic.style.display = "block"
                             }
+                            if (atspercent < 75 && atspercent >=65) {
+                                console.log("badge 100", atspercent)
+                                nobadge.style.display = "none"
+                                averageacademic.style.display = "block"
+                            }
                             if (ctspercent >= 85) {
                                 nobadge.style.display = "none"
                                 perfectcompi.style.display = "block"
@@ -491,15 +518,16 @@
                                 document.getElementById("excellentacademic").style.display = "block"
 
                             }
+                            if (ctspercent < 75 && ctspercent >=65 ) {
+                                console.log("badge 90", atspercent)
+                                nobadge.style.display = "none"
+                                document.getElementById("averagecompi").style.display = "block"
+
+                            }
                             if (ctspercent < 85 && ctspercent >=75) {
                                 nobadge.style.display = "none"
                                 excellentcompi.style.display = "block"
                             }
-
-
-
-
-
 
                             // Hide the spinner once data is fetched and UI is updated
                             spinner.style.display = 'none';
