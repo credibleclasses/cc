@@ -3,4 +3,8 @@ Disallow: /manhwa-toonzmedia-space.html
 Disallow: /newsarticle.html
 Disallow: /file.html
 Disallow: /config.html
+Disallow: /downloading-progress-page-2.html
+Disallow: /downloading-progress-page-3.html
+Disallow: /downloading-progress-page-4.html
+Disallow: /downloading-progress-page-5.html
 
