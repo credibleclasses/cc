@@ -437,8 +437,33 @@
 
                     <div class="mt-5">
                        
-                    
-                        <a onclick="scrollPageBy(100)" class="btn btn-primary btn-lg">DOUBLE CLICK TO READ FULL CHAPTER</a>
+ <!-- BUTTON SETTINGS TIME DISPLAY -->         
+                        <a onclick="scrollPageBy(100)" id="myButton" class="btn btn-primary btn-lg">DOUBLE CLICK TO READ FULL CHAPTER</a>
+
+                        <script>
+                            function isCurrentTimeInRange() {
+    const now = new Date();
+    const currentHour = now.getUTCHours() + 5; // Adjust for IST (UTC+5)
+    // Adjust for the next day if the current hour is before 8 AM IST
+    if (currentHour < 8) {
+        now.setDate(now.getDate() - 1);
+    }
+    const startHour = 0; // 12:00 AM IST
+    const endHour = 8; // 8:00 AM IST
+
+    return currentHour >= startHour && currentHour < endHour;
+}
+
+const button = document.getElementById("myButton");
+
+if (!isCurrentTimeInRange()) {
+    button.style.display = "none";
+}
+                        </script>
+
+<!-- BUTTON SETTINGS TIME DISPLAY -->
+
+                        
                        <div class="square-ad-container mt-2">
                         <!-- Place your ad content here -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6044316283536287"
@@ -526,20 +551,6 @@
    </style>
  </head>
  <body>
-<!--    <div class="banner" id="banner">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6044316283536287"
-     crossorigin="anonymous"></script>
-<!-- test12 -->
-<ins class="adsbygoogle"
-     style="display:inline-block;width:728px;height:90px"
-     data-ad-client="ca-pub-6044316283536287"
-     data-ad-slot="5846344773"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-     <span class="close-button" onclick="closeBanner()">X</span>
-   </div> -->
- 
    <script>
      // JavaScript function to close the banner
      function closeBanner() {
